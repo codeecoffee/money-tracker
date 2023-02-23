@@ -89,6 +89,7 @@ export const TransactionTypeButton = styled(
 	justify-content: center;
 	padding: 1rem;
 	gap: 0.5rem;
+
 	border-radius: 6px;
 	cursor: pointer;
 	border: 0;
