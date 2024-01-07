@@ -18,7 +18,7 @@ export function Transactions() {
 	);
 
 	return (
-		<div>
+		<>
 			<Header />
 			<Summary />
 			<TransactionsContainer>
@@ -41,6 +41,6 @@ export function Transactions() {
 					</tbody>
 				</TransactionsTable>
 			</TransactionsContainer>
-		</div>
+		</>
 	);
 }

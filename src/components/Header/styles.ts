@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-	background: ${(props) => props.theme['gray-900']};
+	background: ${(props) => props.theme['blue']};
 	padding: 2.5rem 0 7.5rem 0;
 `;
 
@@ -16,17 +16,17 @@ export const HeaderContent = styled.div`
 `;
 
 export const NewTransactionButton = styled.button`
-	height: 50px;
+	height: 3rem;
 	border: 0;
-	background: ${(props) => props.theme['green-500']};
-	color: ${(props) => props.theme.white};
+	background: ${(props) => props.theme['blue-light']};
+	color: ${(props) => props.theme['shape']};
 	font-weight: bold;
 	padding: 0 1.25rem;
 	border-radius: 6px;
 	cursor: pointer;
+	transition: filter 0.3s;
 
 	&:hover {
-		background: ${(props) => props.theme['green-700']};
-		transition: background-color 0.5s;
+		filter:brightness(0.9);
 	}
 `;
