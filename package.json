@@ -15,6 +15,7 @@
     "@radix-ui/react-radio-group": "^1.1.1",
     "@styled/typescript-styled-plugin": "^0.20.0",
     "axios": "^1.3.4",
+    "miragejs": "^0.1.48",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,42 +1,35 @@
-import styled, { css } from 'styled-components';
+import styled from "styled-components";
 
-export const SummaryContainer = styled.section`
-	width: 100%;
-	max-width: 1120px;
-	margin: 0 auto;
-	padding: 0 1.5rem;
+export const Container= styled.div`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: -10rem;
 
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 2rem;
+    div{
+        background: var(--shape);
+        padding: 1.5rem 2rem;
+        border-radius: .25rem;
+        color: var(--text-title);
+        header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-	margin-top: -5rem;
-`;
+        strong{
+            display: block;
+            margin-top: 1rem;
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 3rem;
+        }
+        
+        &.highlight-bg{
+            background: var(--green);
+            color: #fff;
+    
+        }
+    }
 
-interface SummaryCardProps {
-	variant?: 'green';
-}
-
-export const SummaryCard = styled.div<SummaryCardProps>`
-	background: ${(props) => props.theme['shape']};
-	border-radius: 6px;
-	padding: 2rem;
-
-	header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		color: ${(props) => props.theme['text-title']};
-	}
-
-	strong {
-		display: block;
-		margin-top: 1rem;
-		font-size: 2rem;
-	}
-	${(props) =>
-		props.variant === 'green' &&
-		css`
-			background: ${props.theme['green-700']};
-		`}
-`;
+`

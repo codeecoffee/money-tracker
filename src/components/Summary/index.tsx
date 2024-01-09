@@ -1,33 +1,32 @@
-import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from 'phosphor-react';
-import { useSummary } from '../../hooks/useSummary';
-import { priceFormatter } from '../../util/formatter';
-import { SummaryCard, SummaryContainer } from './styles';
+import { Container } from "./styles";
+import incoming from '../../assets/incoming.svg';
+import outcoming from '../../assets/outcoming.svg';
+import total from '../../assets/total.svg';
 
-export function Summary() {
-	const summary = useSummary();
-	return (
-		<SummaryContainer>
-			<SummaryCard>
-				<header>
-					<span>In</span>
-					<ArrowCircleUp size={32} color="#00b37e" />
-				</header>
-				<strong>{priceFormatter.format(summary.income)}</strong>
-			</SummaryCard>
-			<SummaryCard>
-				<header>
-					<span>Out</span>
-					<ArrowCircleDown size={32} color="#f75a68" />
-				</header>
-				<strong>{priceFormatter.format(summary.outcome)}</strong>
-			</SummaryCard>
-			<SummaryCard variant="green">
-				<header>
-					<span>Total</span>
-					<CurrencyDollar size={32} color="#fff" />
-				</header>
-				<strong>{priceFormatter.format(summary.total)}</strong>
-			</SummaryCard>
-		</SummaryContainer>
-	);
+export function Summary(){
+    return(
+        <Container>
+            <div>
+                <header>
+                    <p>in</p>
+                    <img src={incoming} alt="" />
+                </header>
+                <strong>$1000</strong>
+            </div>
+            <div>
+                <header>
+                    <p>out</p>
+                    <img src={outcoming} alt="" />
+                </header>
+                <strong>$3000</strong>
+            </div>
+            <div className="highlight-bg">
+                <header>
+                    <p>Total</p>
+                    <img src={total} alt="" />
+                </header>
+                <strong>$5000</strong>
+            </div>
+        </Container>
+    )
 }
