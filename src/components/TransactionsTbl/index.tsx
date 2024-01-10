@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Container } from "./styles";
-import { api } from "../../services/api";
+import { useTransactions } from "../../hooks/useTransactions";
 
-interface Transaction {
-    id:number;
-    title: string;
-    amount: number;
-    type: string;
-    category: string;
-    createdAt: string;    
-}
+
 export function TransactionsTbl(){
-    const [transactions, setTransactions]= useState<Transaction[]>([])
-    useEffect(()=>{
-        api.get('transactions')
-        .then(response=> setTransactions(response.data.transactions))
-        
-    },[])
+    const { transactions } = useTransactions()
  //Intl.DateTimeFormat().resolvedOptions().timeZone
     return(
         <Container>
