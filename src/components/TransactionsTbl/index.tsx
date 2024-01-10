@@ -1,15 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "./styles";
 import { api } from "../../services/api";
 
-
+interface Transaction {
+    id:number;
+    title: string;
+    amount: number;
+    type: string;
+    category: string;
+    createdAt: string;    
+}
 export function TransactionsTbl(){
+    const [transactions, setTransactions]= useState<Transaction[]>([])
     useEffect(()=>{
         api.get('transactions')
-        .then(response=> console.log(response.data))
+        .then(response=> setTransactions(response.data.transactions))
         
     },[])
-    // const[transactions, ]
+ //Intl.DateTimeFormat().resolvedOptions().timeZone
     return(
         <Container>
             <table>
@@ -22,18 +30,20 @@ export function TransactionsTbl(){
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>App Development</td>
-                        <td className="deposit">$400</td>
-                        <td>Dev</td>
-                        <td>01/04/2024</td>
-                    </tr>
-                    <tr>
-                        <td>Rent</td>
-                        <td className="withdraw">- $700</td>
-                        <td>House</td>
-                        <td>01/04/2024</td>
-                    </tr>
+                    {transactions.map(transaction =>(
+                        <tr key={transaction.id}>
+                            <td>{transaction.title}</td>
+                            <td className={transaction.type}>{new Intl.NumberFormat('en-US',{
+                                style: 'currency',
+                                currency: 'USD'
+                            }).format(transaction.amount)}</td>
+                            
+                            <td>{transaction.category}</td>
+                            <td>{ new Intl.DateTimeFormat('en-US')
+                                .format( new Date(transaction.createdAt))}
+                            </td>
+                        </tr> 
+                    ))}
                 </tbody>
             </table>
         </Container>
